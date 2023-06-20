@@ -3,7 +3,7 @@
     <app-short-url-form (done)="getRecords()">
     </app-short-url-form>
 
-
+    Count: {{records.length}}
     <div class="row">
         <div class="col-12 col-md-3"  *ngFor="let record of records">
             <div class="border rounded my-2" >

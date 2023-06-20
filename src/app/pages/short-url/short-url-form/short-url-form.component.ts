@@ -34,12 +34,6 @@ export class ShortUrlFormComponent {
   }
 
   save(){
-    this.submitted = true;
-
-    if(
-      this.recordForm.invalid){
-     return;
-    }
     this._recordService.createRecords({
       ...this.recordForm.value
     }).subscribe(res=>{
@@ -50,6 +44,12 @@ export class ShortUrlFormComponent {
   }
 
   shortUrl(){
+    this.submitted = true;
+
+    if(
+      this.recordForm.invalid){
+     return;
+    }
     let url = "http://shorturl.com/";
 
     if(this.recordForm.value.old_url){
