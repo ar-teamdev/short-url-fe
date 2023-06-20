@@ -1,0 +1,16 @@
+<div class="my-4" [formGroup]="recordForm">
+    <label for="">    Paste the URL to be shortened</label>
+
+    <div class="input-group mb-1">
+        <input type="text" class="form-control" placeholder="Enter the link here" aria-label="Enter the link here" aria-describedby="basic-addon2"
+        [ngClass]="{ 'is-invalid': submitted && f['old_url'].errors }">
+        <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2" (click)="save()">Shorten URL</span>
+        </div>
+    </div>
+    <div *ngIf="submitted && f['old_url'].errors" class="text-danger">
+        <small *ngIf="f['old_url'].errors['required']">
+          This field is required.
+        </small>
+      </div>      
+</div>
