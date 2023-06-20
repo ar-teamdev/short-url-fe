@@ -39,5 +39,30 @@ export class ShortUrlFormComponent {
       this.recordForm.invalid){
      return;
     }
+
+    this.submitted = false;
+    this.recordForm.reset();
+  }
+
+  shortUrl(){
+    let url = "http://shorturl.com/";
+
+    if(this.recordForm.value.old_url){
+      url = url + this.random(4);
+  
+      this.recordForm.get("new_url")?.setValue(url);
+    }
+  }
+
+  random(length: number): string {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
   }
 }

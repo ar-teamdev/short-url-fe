@@ -11,10 +11,18 @@ export class RecordService {
     }
 
     getAllRecords(): Observable<any> {
-        return this.http.get<any>(`${this.url}/records`, {})
+        return this.http.get<any>(`${this.url}/records`)
             .pipe(
                 catchError(error => {
                     return of(error.error);
                 }));
     }   
+
+    createRecords(data: any): Observable<any> {
+        return this.http.post<any>(`${this.url}/records`, data)
+            .pipe(
+                catchError(error => {
+                    return of(error.error);
+                }));
+    }  
 }

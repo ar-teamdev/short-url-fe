@@ -3,10 +3,10 @@
     <app-short-url-form>
     </app-short-url-form>
 
-    <hr>
+
     <div class="row">
-        <div class="col-12 col-md-3">
-            <div class="border rounded my-2" *ngFor="let record of records" >
+        <div class="col-12 col-md-3"  *ngFor="let record of records">
+            <div class="border rounded my-2" >
                 <div  class="p-2">
                     <div class="mb-1">
                         old url: {{record['old_url']}}
