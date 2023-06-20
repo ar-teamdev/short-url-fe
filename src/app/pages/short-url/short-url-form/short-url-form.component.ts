@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { RecordService } from 'src/app/services/record.service';
 
@@ -10,6 +10,7 @@ import { RecordService } from 'src/app/services/record.service';
 export class ShortUrlFormComponent {
   public recordForm!: UntypedFormGroup;
   public submitted = false;
+  @Output() done = new EventEmitter<any>();
 
   constructor(
     private _formBuilder: UntypedFormBuilder,
@@ -39,9 +40,13 @@ export class ShortUrlFormComponent {
       this.recordForm.invalid){
      return;
     }
-
-    this.submitted = false;
-    this.recordForm.reset();
+    this._recordService.createRecords({
+      ...this.recordForm.value
+    }).subscribe(res=>{
+      this.done.emit();
+      this.submitted = false;
+      this.recordForm.reset();
+    })
   }
 
   shortUrl(){

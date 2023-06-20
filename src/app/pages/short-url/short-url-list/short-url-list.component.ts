@@ -15,12 +15,16 @@ export class ShortUrlListComponent {
 
   ngOnInit(): void {
 
-   this._recordService.getAllRecords().subscribe(res=>{
-    if(res.resultCode == 20000){
-      this.records = res.resultData;
-    }else{
-      this.records = [];
-    }
-   })
+    this.getRecords();
+  }
+
+  getRecords(){
+    this._recordService.getAllRecords().subscribe(res=>{
+      if(res.resultCode == 20000){
+        this.records = res.resultData;
+      }else{
+        this.records = [];
+      }
+     })
   }
 }
