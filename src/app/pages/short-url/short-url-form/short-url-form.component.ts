@@ -25,7 +25,7 @@ export class ShortUrlFormComponent {
   createFrom(){
     this.recordForm = this._formBuilder.group({
       old_url: ['', [Validators.required]],
-      new_url: ['', [Validators.required]],
+      new_url: [''],
     });
   }
 
